@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">ProductList</string>
+    <string name="product_name">Product Name</string>
+    <string name="product_description">Product Description</string>
+    <string name="product_rating">Product Rating</string>
+    <string name="product_count">product count</string>
+    <string name="dollar">$</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
