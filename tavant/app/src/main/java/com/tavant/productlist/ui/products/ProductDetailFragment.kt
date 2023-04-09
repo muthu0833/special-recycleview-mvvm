@@ -1,13 +1,10 @@
 package com.tavant.productlist.ui.products
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.tavant.productlist.R
+import com.tavant.productlist.data.model.ProductItem
 import com.tavant.productlist.databinding.FragmentProductDetailBinding
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.kodein
@@ -27,8 +24,8 @@ class ProductDetailFragment : BaseFragment<FragmentProductDetailBinding>
             ViewModelProvider(requireActivity(), factory).get(ProductViewModel::class.java)
         viewModel.selectedProduct.observe(viewLifecycleOwner, Observer { product ->
             println("prodcuts ${product.title}")
-            binding?.product  = product
-            binding?.lifecycleOwner = this
+            binding.product = product
+            binding.lifecycleOwner = this
         })
     }
 }

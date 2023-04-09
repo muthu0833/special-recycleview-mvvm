@@ -9,7 +9,7 @@ import com.tavant.productlist.data.model.ProductItem
 import com.tavant.productlist.databinding.RecyclerviewItemBinding
 
 class ProductAdapter(private val products : List<ProductItem>,
-    private val listener: RecyclerViewClickListener) :
+                     private val listener: RecyclerViewClickListener) :
     RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
 
 
@@ -25,9 +25,17 @@ class ProductAdapter(private val products : List<ProductItem>,
 
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
         holder.recyclerviewItemBinding.product = products[position]
-        holder.recyclerviewItemBinding.root.setOnClickListener{
-            listener.onRecyclerViewItemClick(products[position])
+        holder.recyclerviewItemBinding.productDesc.setOnClickListener{
+            listener.onRecyclerViewItemClick(it, products[position])
         }
-
+        holder.recyclerviewItemBinding.productName.setOnClickListener{
+            listener.onRecyclerViewItemClick(it, products[position])
+        }
+        holder.recyclerviewItemBinding.productImage.setOnClickListener{
+            listener.onRecyclerViewItemClick(it, products[position])
+        }
+        holder.recyclerviewItemBinding.productFavourite.setOnClickListener{
+            listener.onRecyclerViewItemClick(it, products[position])
+        }
     }
 }
