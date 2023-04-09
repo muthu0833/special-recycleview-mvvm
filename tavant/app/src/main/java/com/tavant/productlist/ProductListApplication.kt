@@ -1,6 +1,7 @@
 package com.tavant.productlist
 
 import android.app.Application
+import com.tavant.productlist.data.db.ProductDatabase
 import com.tavant.productlist.data.network.NetworkConnectionInterceptor
 import com.tavant.productlist.data.network.ProductAPI
 import com.tavant.productlist.data.repository.ProductRepository
@@ -19,7 +20,8 @@ class ProductListApplication : Application(), KodeinAware {
 
         bind() from singleton { NetworkConnectionInterceptor(instance()) }
         bind() from singleton { ProductAPI(instance()) }
-        bind() from singleton { ProductRepository(instance()) }
+        bind() from singleton { ProductDatabase.getDatabase(instance()) }
+        bind() from singleton { ProductRepository(instance(),instance()) }
         bind() from provider  { ProductViewModelFactory(instance())}
     }
 }

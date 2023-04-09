@@ -25,10 +25,25 @@ class ProductViewModel(private val repository: ProductRepository) : ViewModel() 
     fun getProducts(){
       job =  Coroutines.ioThenMain(
             {repository.getProducts(10)},
-            {_product.value = it})
+            {saveProducts(it)})
 
     }
+    fun isExists() = repository.isExists()
 
+    fun updateProduct(productItem: ProductItem){
+        job =  Coroutines.ioThenMain(
+            {repository.updateProduct(productItem)},
+            {})
+    }
+
+    fun getCachedProducts() = repository.getProducts()
+
+    fun saveProducts(products: List<ProductItem>) //= repository.saveProducts(products)
+    {
+        job =  Coroutines.ioThenMain(
+            {repository.saveProducts(products)},
+            {})
+    }
     fun selectedProduct(selectedProduct : ProductItem){
         _selectedProduct.value = selectedProduct
     }
